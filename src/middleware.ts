@@ -6,6 +6,6 @@ export const onRequest = defineMiddleware((context, next) => {
     console.log("import.meta.env", import.meta.env)
     console.log("context.locals.runtime.env.VAR", context.locals.runtime?.env.VAR)
     console.log("context.locals.runtime.env", context.locals.runtime?.env)
-    context.locals.cfVar = context.locals.runtime?.env.VAR
+    // context.locals.cfVar = context.locals.runtime?.env.VAR
     return next();
 })
