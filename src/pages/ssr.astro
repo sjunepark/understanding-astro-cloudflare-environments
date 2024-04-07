@@ -1,0 +1,40 @@
+---
+export const prerender = false
+
+type KV = {
+    key: string
+    value: string
+}
+
+const kvs: KV[] = [
+    {key: 'import.meta.env.MODE', value: import.meta.env.MODE},
+    {key: 'dotenv', value: import.meta.env.VAR},
+    {key: 'ssr', value: import.meta.env.SSR},
+    {key: 'Astro.locals', value: JSON.stringify(Astro.locals)},
+]
+---
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>Astro</title>
+</head>
+<body>
+
+<table class="table max-w-sm">
+    <tr>
+        <th>Source(or variable)</th>
+        <th>Value</th>
+    </tr>
+    {kvs.map(({key, value}) => (
+            <tr>
+                <td>{key}</td>
+                <td>{value}</td>
+            </tr>
+    ))}
+</table>
+</body>
+</html>
